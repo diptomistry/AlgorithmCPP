@@ -1,0 +1,27 @@
+#2d vector:
+vector<vector<int>> matrix:it creates an empty 2D vector where the size of each dimension is not specified.
+vector<vector<int>> matrix(n, vector<int>(m));n by m matrix
+vector<vector<int>> matrix(n, vector<int>(m, 0)):n rows with m columns and all the elements are initialized with 0
+##resize:
+1d:
+resize( size_type count );
+
+resize( size_type count, const value_type& value );
+vector<int> c = {1, 2, 3}; 
+c.resize(5);
+c.resize(2);
+c.resize(6, 4);
+
+The vector holds: 1 2 3
+After resize up to 5: 1 2 3 0 0
+After resize down to 2: 1 2
+After resize up to 6 (initializer = 4): 1 2 4 4 4 4
+
+2d:
+//vector<vector<int>> adjList;
+adjList.resize(n);After executing this line, adjList will be a vector with n empty vectors
+adjList.resize(n, vector<int>(n));After executing this line, adjList will be a vector with n vectors, each initialized to a vector of size n
+
+adjMatrix.resize(n, vector<int>(n, 0));n by n matrix with all the elements 0
+##
+hello
