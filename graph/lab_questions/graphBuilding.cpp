@@ -5,7 +5,7 @@ int main() {
     int N, M;
     cin >> N >> M;
 
-    vector<vector<int>> adjList(N);
+    vector<vector<int> > adjList(N);
 
     for (int i = 0; i < M; i++) {
         int U, V;
@@ -25,3 +25,21 @@ int main() {
 
     return 0;
 }
+/*
+Input
+6
+6
+1 2
+1 3
+0 1
+2 4
+4 5
+5 1
+Output
+0: 1
+1: 2 3
+2: 4
+3:
+4: 5
+5: 1
+*/
