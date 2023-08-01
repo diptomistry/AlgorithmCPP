@@ -1,0 +1,4 @@
+#bfs:explore all the neighbors of the node
+#dfs:continue traversing
+
+#topology:https://youtu.be/3tkcfvCNtM8?t=358
