@@ -17,8 +17,8 @@ int main() {
     // Print the adjacency list
     for (int u = 0; u < numVertices; u++) {
         cout << "Neighbors of vertex " << u << ": ";
-        for (int v : adjList[u]) {
-            cout << v << " ";
+        for (int v=0;v<adjList[u].size();v++) {
+            cout << adjList[u][v] << " ";
         }
         cout << endl;
     }
