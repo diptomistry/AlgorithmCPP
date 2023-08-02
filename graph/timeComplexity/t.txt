@@ -1,0 +1,3 @@
+#dfs:O(v+e)
+#articulation point:as we are removing each node one by one and doing dfs:O(v(v+e))[we can reduce the timeComplexity]
+

@@ -2,3 +2,16 @@
 #dfs:continue traversing
 
 #topology:https://youtu.be/3tkcfvCNtM8?t=358
+#connected:A node and all the nodes reachable from it compose a connected component.
+• A graph is called connected if it has only one connected component.
+#Connected: Usually associated with undirected graphs (two way edges): 
+There is a path between every two nodes. 
+#Strongly connected: Usually associated with directed graphs (one way edges): There is a route between every two nodes (route ~ path in each direction between each pair of vertices).
+#biconnected
+components:contains no aricular point(is a vertex whose removel will disconnect the graph)
+#A maximum set of nodes for which there are
+two different paths is called biconnected
+components.
+
+
+#if removing a node increase the number of components ,it will be called a ariculation point
