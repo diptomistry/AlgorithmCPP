@@ -1,84 +1,70 @@
-#include<iostream>
-#include<vector>
-#include<set>
-#include<algorithm>
-#define MAXN 10000
-
+#include<bits/stdc++.h>
 using namespace std;
+#define V 5
+#define pb push_back
 
-vector<int> adj[MAXN];
-bool visited[MAXN];
-int tin[MAXN];
-int low[MAXN];
-int timer;
-set<int> AP;
-vector<pair<int, int> > bridge;
+unordered_map<int,vector<int> > adj;
 
-void DFS(int v, int p = -1) {
-    visited[v] = true;
-    tin[v] = low[v] = timer++;
-    int children = 0;
-    for (int i = 0; i < adj[v].size(); ++i) {
-        int to = adj[v][i];
-        if (to == p) continue;
-        if (visited[to]) {
-            low[v] = min(low[v], tin[to]);
-        } else {
-            DFS(to, v);
-            low[v] = min(low[v], low[to]);
-            if (low[to] >= tin[v] && p != -1)
-                AP.insert(v);
-            ++children;
-        }
-        if(p == -1 && children > 1)
-            AP.insert(v);
-        if (low[to] > tin[v])
-            bridge.push_back(make_pair(v, to));
+void DFS(int u, vector<int>& disc, vector<int>& low, vector<int>& parent, vector<bool>& articulation_Point) {
+    static int time = 0; // initialized only once
+    disc[u] = low[u] = time;
+    time += 1;
+    int children = 0; // for node u(current node), children is 0
+
+    for (int i = 0; i < adj[u].size(); ++i) {
+        int v = adj[u][i];
+        if (disc[v] == -1) // If v is not visited
+        {
+            children += 1;
+            parent[v] = u;
+            DFS(v, disc, low, parent, articulation_Point);
+            low[u] = min(low[u], low[v]);
+
+            if (parent[u] == -1 && children > 1) // if current node is root node and having more than 1 children
+                articulation_Point[u] = true;
+
+            if (parent[u] != -1 && low[v] >= disc[u]) // Case-2: At least 1 component will get separated
+                articulation_Point[u] = true;
+        } 
+        // v is visited means v is the ancestor of u
+        else if (v != parent[u])// Ignore child to parent edge
+            low[u] = min(low[u], disc[v]);
     }
 }
 
-void findAP_Bridges(int n) {
-    timer = 0;
-    AP.clear();
-    bridge.clear();
-    for (int i = 0; i < n; ++i) {
-        visited[i] = false;
-    }
-    for (int i = 0; i < n; ++i) {
-        if (!visited[i])
-            DFS(i);
-    }
+
+void findAPs_Tarjan()
+{
+	vector<int> disc(V,-1),low(V,-1),parent(V,-1);
+	vector<bool> articulation_Point(V,false);	//Avoids cross-edge
+
+	for(int i=0;i<V;++i)
+		if(disc[i]==-1)
+			DFS(i,disc,low,parent,articulation_Point);
+
+	cout<<"Articulation Points Are: ";
+	for(int i=0;i<V;++i)
+		if(articulation_Point[i]==true)
+			cout<<i<<" ";
 }
 
-int main() {
-    int nodes, edges, u, v;
-    cin >> nodes >> edges;
-    for(int i = 0; i < edges; i++) {
-        cin >> u >> v;
-        adj[u].push_back(v);
-        adj[v].push_back(u);
-    }
+int main()
+{
+	adj[0].pb(2);
+	adj[2].pb(0);
+	adj[0].pb(3);
+	adj[3].pb(0);
+	adj[1].pb(0);
+	adj[0].pb(1);
+	adj[2].pb(1);
+	//adj[2].pb(4);
+	//adj[4].pb(2);
+	adj[1].pb(2);
+	adj[3].pb(4);
+	adj[4].pb(3);
 
-    findAP_Bridges(nodes);
-
-    cout << "Articulation Points:\n";
-    for(set<int>::iterator it = AP.begin(); it != AP.end(); ++it) {
-        cout << *it << " ";
-    }
-    cout << "\nBridges:\n";
-    for(vector<pair<int, int> >::iterator it = bridge.begin(); it != bridge.end(); ++it) {
-        cout << it->first << "--" << it->second << "\n";
-    }
-    return 0;
+	findAPs_Tarjan();
+	return 0;
 }
-/*
-7 7
-0 1
-1 2
-2 0
-1 3
-3 4
-4 5
-5 3
 
-*/
+//TIME COMPLEXITY: O(V+E)

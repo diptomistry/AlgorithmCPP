@@ -1,3 +1,23 @@
+#Here are some common time complexities and their corresponding descriptions:
+
+->O(1) - Constant Time Complexity: The algorithm takes a constant amount of time, regardless of the input size.
+
+->O(log n) - Logarithmic Time Complexity: The running time grows logarithmically with the input size. Common in binary search or divide-and-conquer algorithms.
+
+->O(n) - Linear Time Complexity(single for loop): The running time increases linearly with the input size. A simple loop over the input data exhibits linear time complexity.
+
+->O(n log n) - Linearithmic Time Complexity: Common in efficient sorting algorithms like merge sort and heapsort.
+
+->O(n^2) - Quadratic Time Complexity(nested for): The running time is proportional to the square of the input size. Common in algorithms with nested loops.
+
+->O(n^k) - Polynomial Time Complexity: The running time is a polynomial function of the input size, where k is a constant.
+
+->O(2^n) - Exponential Time Complexity: The running time grows exponentially with the input size. Common in algorithms that involve exhaustive search.
+
+->O(n!) - Factorial Time Complexity: The running time grows factorial with the input size. Common in brute-force algorithms that generate all permutations or combinations.
+
+
 #dfs:O(v+e)
-#articulation point:as we are removing each node one by one and doing dfs:O(v(v+e))[we can reduce the timeComplexity]
+#articulation point:as we are removing each node one by one and doing dfs:O(v(v+e))[we can reduce the timeComplexity by including case 1 and case2{O(v+e)}]
+
 
