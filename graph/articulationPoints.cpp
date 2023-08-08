@@ -68,3 +68,9 @@ int main()
 }
 
 //TIME COMPLEXITY: O(V+E)
+/*
+Avoiding Parent-Child Edges:
+If you consider the child-parent edge during the DFS traversal, it would lead to incorrect results. This is because, 
+in a DFS tree, the child-parent edge is a tree edge, not a back edge. The "low" values for the child vertices would 
+not take into account the parent's "disc" value as a back edge would.
+*/

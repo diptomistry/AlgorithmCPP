@@ -18,6 +18,11 @@
 
 
 #dfs:O(v+e)
-#articulation point:as we are removing each node one by one and doing dfs:O(v(v+e))[we can reduce the timeComplexity by including case 1 and case2{O(v+e)}]
+#articulation point:we will remove a node and start dfs ,if number of component increases it is 
+ an AP.as we are removing each node one by one and doing dfs:O(v(v+e))[we can reduce the timeComplexity by including case 1 and case2{O(v+e)}]
+ #bridges:same goes for bridges.we will remove an edge and start dfs ,if number of component increases it is 
+ a bridge.as we are removing each edge one by one and doing dfs:O(e(v+e))
+ -->optimizing the solution:same as AP:O(v+e)
+ 
 
 

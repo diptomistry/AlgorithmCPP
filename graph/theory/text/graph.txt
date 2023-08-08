@@ -15,3 +15,5 @@ components.
 
 
 #if removing a node increase the number of components ,it will be called a ariculation point
+
+#crossEdgeVSbackEdge:https://youtu.be/ZeDNSeilf-Y?t=674

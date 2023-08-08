@@ -1,72 +1,59 @@
-#include <bits/stdc++.h>
+#include<bits/stdc++.h>
 using namespace std;
+#define V 5
+#define pb push_back
 
-int SCC_count = 0; // Global variable to store the number of SCCs
+unordered_map<int,vector<int> > adj;
 
-void dfs(vector<vector<int> >& adjList, int node, vector<bool>& visited, stack<int>& st, vector<bool>& recursionStack, vector<int>& disc, vector<int>& low) {
-    static int time = 0;
-    visited[node] = true;
-    disc[node] = low[node] = ++time;
-    st.push(node);
-    recursionStack[node] = true;
+void DFS(int u,vector<int>& disc,vector<int>& low,vector<int>& parent,vector<pair<int,int> >& bridge)
+{
+	static int time = 0;
+	disc[u] = low[u] = time;
+	time+=1;
 
-    for (int i = 0; i < adjList[node].size(); i++) {
-        int neighbor = adjList[node][i];
+	for(int v: adj[u])
+	{
+		if(disc[v]==-1)	//If v is not visited
+		{
+			parent[v] = u;
+			DFS(v,disc,low,parent,bridge);
+			low[u] = min(low[u],low[v]);
 
-        if (!visited[neighbor]) {
-            dfs(adjList, neighbor, visited, st, recursionStack, disc, low);
-            low[node] = min(low[node], low[neighbor]);
-        } else if (recursionStack[neighbor]) {
-            low[node] = min(low[node], disc[neighbor]);
-        }
-    }
-
-    if (low[node] == disc[node]) {
-        SCC_count++; // Increment SCC count
-        cout << "Strongly Connected Component " << SCC_count << ": ";
-        while (true) {
-            int v = st.top();
-            st.pop();
-            recursionStack[v] = false;
-            cout << v << " ";
-            if (v == node) break;
-        }
-        cout << endl;
-    }
+			if(low[v] > disc[u])
+				bridge.pb(make_pair(u,v));
+		}
+		else if(v!=parent[u])	//Ignore child to parent edge
+			low[u] = min(low[u],disc[v]);
+	}
 }
 
-vector<int> topologicalSort(vector<vector<int> >& adjList) {
-    int N = adjList.size();
-    vector<int> result;
-    vector<bool> visited(N, false);
-    vector<bool> recursionStack(N, false);
-    vector<int> disc(N, -1);
-    vector<int> low(N, -1);
-    stack<int> st;
+void findBridges_Tarjan()
+{
+	vector<int> disc(V,-1),low(V,-1),parent(V,-1);
+	vector<pair<int,int> > bridge;
 
-    for (int i = 0; i < N; ++i) {
-        if (!visited[i]) {
-            dfs(adjList, i, visited, st, recursionStack, disc, low);
-        }
-    }
+	for(int i=0;i<V;++i)
+		if(disc[i]==-1)
+			DFS(i,disc,low,parent,bridge);
 
-    return result;
+	cout<<"Bridges are: \n";
+	for(auto it: bridge)
+		cout<<it.first<<"-->"<<it.second<<"\n";
 }
 
-int main() {
-    int numNodes = 5;
-    vector<vector<int> > adjList(numNodes);
+int main()
+{
+	adj[0].pb(2);
+	adj[2].pb(0);
+	adj[0].pb(3);
+	adj[3].pb(0);
+	adj[1].pb(0);
+	adj[0].pb(1);
+	adj[2].pb(1);
+	adj[1].pb(2);
+	adj[3].pb(4);
+	adj[4].pb(3);
 
-   adjList[0].push_back(2);
-    adjList[1].push_back(0);
-    adjList[2].push_back(1);
-    adjList[2].push_back(3);
-    adjList[3].push_back(4);
-    adjList[4].push_back(2);
-
-    vector<int> sortedOrder = topologicalSort(adjList);
-
-    cout << "Number of Strongly Connected Components: " << SCC_count << endl;
-
-    return 0;
+	findBridges_Tarjan();
+	return 0;
 }
