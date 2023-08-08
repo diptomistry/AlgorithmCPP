@@ -1,6 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
-#define V 5
+#define V 6
 #define pb push_back
 
 unordered_map<int, vector<int> > adj;
@@ -42,16 +42,32 @@ void findBridges_Tarjan() {
 }
 
 int main() {
-    adj[0].pb(2);
-    adj[2].pb(0);
     adj[0].pb(3);
     adj[3].pb(0);
-    adj[1].pb(0);
-    adj[0].pb(1);
+    adj[3].pb(2);
+    adj[2].pb(3);
     adj[2].pb(1);
     adj[1].pb(2);
-    adj[3].pb(4);
-    adj[4].pb(3);
+    adj[2].pb(4);
+    adj[4].pb(2);
+    adj[2].pb(5);
+    adj[5].pb(2);
+    adj[4].pb(5);
+    adj[5].pb(4);
+    adj[1].pb(4);
+    adj[4].pb(1);
+    /*
+    adj[0].pb(2);
+	adj[2].pb(0);
+	adj[0].pb(3);
+	adj[3].pb(0);
+	adj[1].pb(0);
+	adj[0].pb(1);
+	adj[2].pb(1);
+	adj[1].pb(2);
+	adj[3].pb(4);
+	adj[4].pb(3);
+    */
 
     findBridges_Tarjan();
     return 0;
