@@ -74,7 +74,7 @@ void Kruskals(vector<Edge>& edge_List,int V,int E)
 		++i;
 	}
 }
-//Display the formed MST
+//Display the formed MST//
 void printMST(vector<Edge>& mst)
 {
     cout << "MST formed is\n";
