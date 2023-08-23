@@ -1,0 +1,4 @@
+bellman ford is slower than dijkstra
+both cant find the shortest_path of negative cycles
+but bellman ford can detect negative cycles
+'''
