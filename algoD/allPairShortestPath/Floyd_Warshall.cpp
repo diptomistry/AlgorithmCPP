@@ -5,7 +5,7 @@ using namespace std;
 
 //#define infinity INT_MAX;
 
-void PrintShortestPath(vector<vector<int>>& descendent, int src, int dest){
+void PrintShortestPath(vector<vector<int> >& descendent, int src, int dest){
 
     if(descendent[src][dest]==-1){
         cout<<"no path exists"<<endl;
@@ -30,11 +30,11 @@ void PrintShortestPath(vector<vector<int>>& descendent, int src, int dest){
 }
 
 
-vector<vector<int>> Floyd_Warshall(vector<vector<pair<int,int>>>graph, int v){
+vector<vector<int>> Floyd_Warshall(vector<vector<pair<int,int> > >graph, int v){
 
     vector<vector<int>> dp(v, vector<int>(v));
 
-    vector<vector<int>> descendent (v, vector<int>(v));
+    vector<vector<int> > descendent (v, vector<int>(v));
 
     
 
@@ -107,7 +107,7 @@ while(e--){
     graph[x].push_back({y,w});
 }
 
-vector<vector<int>> ans = Floyd_Warshall(graph, v); //works for both directed and undirected graph
+vector<vector<int> > ans = Floyd_Warshall(graph, v); //works for both directed and undirected graph
 
 /*
     for(int i=0; i<v; i++){
