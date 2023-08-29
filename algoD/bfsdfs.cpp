@@ -5,8 +5,8 @@ class Graph
 {
 private:
     int numVertices;
-    vector<vector<int>> adjList;
-    vector<vector<int>> adjMatrix;
+    vector<vector<int> > adjList;
+    vector<vector<int> > adjMatrix;
 
 public:
     Graph(int n)
