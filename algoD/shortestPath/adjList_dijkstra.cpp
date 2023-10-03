@@ -104,7 +104,7 @@ public:
 };
 
 
-void dijkstra(vector<vector<pair<int,int>>> & graph, int v){
+void dijkstra(vector<vector<pair<int,int> > > & graph, int v){
 
     vector<int> dist(v,INT_MAX);
     vector<bool> vis(v, false);
@@ -155,7 +155,7 @@ int main(){
 int v=2,e;
 cin>>v>>e;
 
-vector<vector<pair<int,int>>> graph(v);
+vector<vector<pair<int,int> > > graph(v);
 
 while(e--){
     int x,y,w;
