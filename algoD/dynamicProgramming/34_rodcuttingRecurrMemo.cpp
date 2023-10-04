@@ -1,3 +1,4 @@
+//top-down dynamic programming approach
 #include<bits/stdc++.h>
 using namespace std;
 
@@ -14,10 +15,6 @@ int rodCutting(int prices[], int n, vector<int>& memo) {
 
    
     for (int i = 1; i <= n; ++i) {
-
-
-
-
         max_val = max(max_val, prices[i - 1] + rodCutting(prices, n - i, memo));
     }
 
