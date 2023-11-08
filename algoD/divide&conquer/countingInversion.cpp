@@ -11,7 +11,7 @@ long long mergeAndCount(vector<int>& arr, vector<int>& temp, int left, int mid, 
     long long inversionCount = 0;
 
     while (i <= mid && j <= right) {
-        if (arr[i] <= arr[j]) {
+        if (arr[i] >= arr[j]) {
             temp[k++] = arr[i++];
         } else {
             // Inversion found
@@ -56,11 +56,10 @@ long long countInversions(vector<int>& arr) {
 }
 
 int main() {
-    vector<int> arr = {1, 20, 6, 4, 5};
+    vector<int> arr = {2000,-1500,2500,-2300,3000};
     long long inversionCount = countInversions(arr);
     
     cout << "Number of inversions: " << inversionCount << endl;
 
     return 0;
 }
-//https://www.youtube.com/watch?v=owZhw-A0yWE&ab_channel=Techdose

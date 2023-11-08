@@ -1,0 +1,1 @@
+{"name":"Local: mst","url":"/Users/dipto/Desktop/AlgorithmCPP/algoD/mst.cpp","tests":[{"id":1699464757655,"input":"11 7","output":"0 1 2\n0 2 6\n1 2 4\n1 3 5\n2 3 7\n2 4 9\n3 4 3\n3 5 1\n4 5 8\n4 6 11\n5 6 10"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/Users/dipto/Desktop/AlgorithmCPP/algoD/mst.cpp","group":"local","local":true}
