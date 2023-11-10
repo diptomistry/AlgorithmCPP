@@ -1,0 +1,7 @@
+we have to reach from source to sink 
+jototuku sent korechi(flow),max jototuku sent kora jaite pare(capacity)
+for each vertex:received flow = sent flow;sent flow from source=received flow from sink
+Ford-Fulkerson:https://youtu.be/3LG-My_MoWc?si=5jiu-wWq9_j_QI6S
+time complexity of Ford-Fulkerson:https://youtu.be/70N1N8gPtuU?si=exnNV7yDrLy9UK_n&t=986
+Edmonds Karp Algorithm:https://youtu.be/RppuJYwlcI8?si=REFkqnxXQ5kyZO0Q&t=291
+Bipartite Graphs and Maximum Matching:https://youtu.be/HWHjQdNC-7Y?si=EIvfATIRJx6dHWPa
