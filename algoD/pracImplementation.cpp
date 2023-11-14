@@ -91,3 +91,32 @@ int main() {
     
     return 0;
 }
+
+/*
+
+ The input represents a simplified scenario of a grid-based city with cell towers, where the goal is to connect these towers with a telecommunication network while minimizing cable length. 
+ Here's the input and the corresponding output:
+Minimum Spanning Tree Edges:
+Tower 0 - Tower 1, Cable Length: 2
+Tower 3 - Tower 4, Cable Length: 3
+Tower 1 - Tower 2, Cable Length: 4
+Tower 1 - Tower 3, Cable Length: 5
+
+->Edge Selection:
+
+The algorithm starts by sorting the edges in non-decreasing order of cable lengths.
+It then iteratively selects edges that do not create cycles until all towers are connected.
+
+->Output Explanation:
+The output lists the selected edges forming the Minimum Spanning Tree (MST).
+Each line indicates an edge between two towers and the corresponding cable length.
+
+Resulting MST:
+
+The resulting MST efficiently connects all towers with a minimum total cable length, satisfying the objective of the telecommunication network design.
+Cable Lengths:
+
+The MST edges are chosen to minimize the total cable length required to connect all towers.
+In this example, the total cable length is 2 + 3 + 4 + 5 = 14.
+
+*/
